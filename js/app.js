@@ -14,6 +14,8 @@ $(document).ready(function(){
     playHadouken();
     // Hide ready div
     $('.ryu-ready').hide();
+    // If user enters the div presses x this image would be on top so hide it first
+    $('.ryu-still').hide();
     //Display throwing and hadouken div
     $('.ryu-throwing').show();
     
@@ -28,16 +30,28 @@ $(document).ready(function(){
       }
     );
     
-    
-    
-    
   })
   .mouseup(function() {
     //Hide throwing div
     $('.ryu-throwing').hide();
     //Display ready div
     $('.ryu-ready').show();
-  });
+  })
+  .focus();  
+})
+.keydown(function(event) {
+    if(event.which == 88){
+      
+      $('.ryu-ready,.ryu-still').hide();
+      $('.ryu-cool').show();
+    }
+  
+})
+.keyup(function(event){
+  if(event.which == 88){
+    $('.ryu-cool').hide();
+    $('.ryu-still').show();
+  }
 });
 
 function playHadouken () {
